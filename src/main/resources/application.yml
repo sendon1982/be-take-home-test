@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+take-home-test:
+  db:
+    url: jdbc:mysql://remotemysql.com:3306/faBRers6dU?useLegacyDatetimeCode=false&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false&requireSSL=false
+    username: faBRers6dU
+    password: VJcPvVgU8b
+
+
+
+spring:
+  application:
+    name: take-home-test
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+
+  ### DB config
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${take-home-test.db.url}
+    username: ${take-home-test.db.username}
+    password: ${take-home-test.db.password}
+
+  ### Liquibase Config
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+    url: ${take-home-test.db.url}
+    user: ${take-home-test.db.username}
+    password: ${take-home-test.db.password}
