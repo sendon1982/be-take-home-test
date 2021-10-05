@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/pro
+                   http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="sendon1982" id="0001">
+
+        <createTable tableName="user_info" >
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(128)" >
+                <constraints nullable="false" unique="true" uniqueConstraintName="unique_email"/>
+            </column>
+
+            <column name="password" type="VARCHAR(100)" >
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_by" type="BIGINT" />
+            <column name="created_at" type="datetime" />
+            <column name="updated_by" type="BIGINT" />
+            <column name="updated_at" type="datetime" />
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -2,6 +2,7 @@ package com.rvpnp.users.web.advice;
 
 import com.rvpnp.users.exception.EmailPasswordNotMatchException;
 import com.rvpnp.users.exception.Errors;
+import com.rvpnp.users.exception.NewAndConfirmedPasswordNotMatchException;
 import com.rvpnp.users.exception.UserEmailNotFoundException;
 import com.rvpnp.users.model.ErrorResponse;
 import com.rvpnp.users.web.UserRestController;
@@ -40,6 +41,15 @@ public class UserControllerAdvice {
         errorResponse.setMessage(sb.toString());
 
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NewAndConfirmedPasswordNotMatchException.class)
+    public ResponseEntity<ErrorResponse> handle(NewAndConfirmedPasswordNotMatchException e) {
+        log.error("UserEmailNotFoundException", e);
+
+        ErrorResponse errorResponse = buildErrorResponse(e.getErrors());
+
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UserEmailNotFoundException.class)

@@ -1,0 +1,4 @@
+com/rvpnp/users/service/UserServiceImplTest.class
+com/rvpnp/users/TestData.class
+com/rvpnp/users/web/UserRestControllerTest.class
+com/rvpnp/users/validator/ChangePasswordValidatorTest.class
